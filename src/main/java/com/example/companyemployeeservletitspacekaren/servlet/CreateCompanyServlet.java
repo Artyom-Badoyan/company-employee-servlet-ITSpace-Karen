@@ -17,6 +17,7 @@ public class CreateCompanyServlet extends HttpServlet {
 
     private CompanyManager companyManager = new CompanyManager();
     List<String> countries = Arrays.asList("Armenai", "USA", "Russia", "France");
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("countryList", countries);
@@ -27,9 +28,10 @@ public class CreateCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String country = req.getParameter("country");
-        Company company = new Company();
-        company.setName(name);
-        company.setCountry(country);
+        Company company = Company.builder()
+                .name(name)
+                .country(country)
+                .build();
         companyManager.save(company);
         resp.sendRedirect("/companies");
     }

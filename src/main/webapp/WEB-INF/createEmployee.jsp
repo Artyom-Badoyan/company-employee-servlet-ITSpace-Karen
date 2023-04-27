@@ -17,7 +17,7 @@
     name: <input type="text" name="name"><br>
     surname: <input type="text" name="surname"><br>
     email: <input type="email" name="email"><br>
-        company name: <select name="company name">
+        company: <select name="companyId">
         <%for (Company company : companyData) {%>
         <option value="<%=company.getId()%>"><%=company.getName()%>></option>
         <% }%>
